@@ -1,0 +1,17 @@
+background_opacity: 0.8
+colors:
+  primary:
+    background: "#222222"
+    foreground: "#c5c8c6"
+font:
+  normal:
+    family: JetBrainsMono
+  offset:
+    x: 0
+    y: 0
+  size: 9.0
+window:
+  padding:
+    x: 5
+    y: 5
+  startup_mode: Maximized
