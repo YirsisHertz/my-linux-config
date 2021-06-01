@@ -1,6 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'wadackel/vim-dogrun'
+" Plug 'wadackel/vim-dogrun'
+Plug 'joshdick/onedark.vim'
+
+Plug 'chiel92/vim-autoformat'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -13,7 +16,7 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'Yggdroot/indentLine'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'} 
 
 Plug 'tpope/vim-commentary'
 
@@ -50,19 +53,19 @@ set cursorline
 
 filetype plugin indent on
 
-set rtp+=~/tabnine-vim
-
 set number
 set relativenumber
 
-colorscheme dogrun
+colorscheme onedark
+
+let g:onedark_termcolors=256
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:airline_powerline_fonts = 1
 
-let g:airline_theme='minimalist'
+let g:airline_theme='onedark'
 
 autocmd vimenter * NERDTree
 
@@ -71,7 +74,6 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let NERDTreeQuitOnOpen = 1
-
 
 nmap <C-s> :w<CR>
 nmap <C-w> :q!<CR>
@@ -82,11 +84,21 @@ nmap <C-o> :bnext<CR>
 nmap - dd
 
 "AutoCommands
-autocmd BufWritePre * :CocCommand prettier.formatFile
+autocmd BufWrite * :CocCommand prettier.formatFile
+autocmd BufWrite *.c :Autoformat
+autocmd BufWrite *.cpp :Autoformat
+autocmd BufWrite *.java :Autoformat
 " autocmd BufWritePre *.css :Format
 " autocmd BufWritePre *.js :Format
 " autocmd BufWritePre *.jsx :Format
 " autocmd BufWritePre *.vue :Format
+
+let g:python_host_prog="/path/to/python/executable/"
+
+let g:autoformat_autoindent = 1
+let g:autoformat_retab = 1
+let g:autoformat_remove_trailing_spaces = 1
+
 
 set hidden
 
