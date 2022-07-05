@@ -1,4 +1,3 @@
-cat .vimrc
 call plug#begin('~/.vim/plugged')
 
 Plug 'joshdick/onedark.vim'
